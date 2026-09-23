@@ -22,6 +22,7 @@ Desarrollar un sistema de riego automatizado y configurable que mantenga las pla
 
 ## CRONOGRAMA 
 El desarrollo está planeado en 3 sprints, del 18 de septiembre al 29 de octubre de 2026.
+
 **Sprint 1 (18 de septiembre al 1 de octubre):** se realiza la configuración inicial del dispositivo (HU01), la configuración de umbrales de riego (HU03) y el riego automático (HU04).
 
 **Sprint 2 (2 al 15 de octubre):** se trabaja el monitoreo de sensores en tiempo real (HU02), el control manual del riego (HU05), el dashboard de monitoreo (HU06) y la gestión de energía y robustez (HU10).

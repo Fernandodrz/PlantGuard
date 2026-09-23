@@ -21,13 +21,13 @@ Desarrollar un sistema de riego automatizado y configurable que mantenga las pla
 - [ ] Robustez y ahorro de energía: reconexión automática a WiFi, manejo de errores de sensores y optimización del envío de datos.
 
 ## CRONOGRAMA 
-El desarrollo está planeado en 3 sprints, del 18 de septiembre al 29 de octubre de 2026.
+El desarrollo de PlantGuard está planeado en 3 sprints, del 18 de septiembre al 2 de noviembre de 2026.
 
-**Sprint 1 (18 de septiembre al 1 de octubre):** se realiza la configuración inicial del dispositivo (HU01), la configuración de umbrales de riego (HU03) y el riego automático (HU04).
+**Sprint 1 (18 de septiembre al 2 de octubre):** se realiza la configuración inicial del dispositivo (HU01), la configuración de umbrales de riego (HU03) y el riego automático (HU04).
 
-**Sprint 2 (2 al 15 de octubre):** se trabaja el monitoreo de sensores en tiempo real (HU02), el control manual del riego (HU05), el dashboard de monitoreo (HU06) y la gestión de energía y robustez (HU10).
+**Sprint 2 (3 al 17 de octubre):** se trabaja el monitoreo de sensores en tiempo real (HU02), el control manual del riego (HU05), el dashboard de monitoreo (HU06) y la gestión de energía y robustez (HU10).
 
-**Sprint 3 (16 al 29 de octubre):** se desarrollan las alertas y notificaciones (HU07), el historial de datos y riegos (HU08) y la lógica de decisión inteligente con IA básica (HU09).
+**Sprint 3 (18 de octubre al 2 de noviembre):** se desarrollan las alertas y notificaciones (HU07), el historial de datos y riegos (HU08) y la lógica de decisión inteligente con IA básica (HU09).
 
 ## DEVELOP TEAM 
 * Alonso Ramirez Erika Quetzalli

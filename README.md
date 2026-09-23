@@ -33,3 +33,4 @@ Desarrollar un sistema de riego automatizado y configurable que mantenga las pla
  - [ ] Plataforma IoT: Blynk, ThingSpeak o Firebase (plan gratuito).
  - [ ] IA básica: Reglas inteligentes y, opcionalmente, scikit-learn / Edge Impulse.
  - [ ] Notificaciones: Notificaciones push de Blynk o Telegram Bot.
+-

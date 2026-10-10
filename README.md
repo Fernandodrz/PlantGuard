@@ -24,7 +24,7 @@ Desarrollar un sistema de riego automatizado y configurable que mantenga las pla
 * Alarcon Vazquez David Ricardo
 * Delgado Pineda Sergio Alberto
 * Duran Rodriguez Fernando Daniel
-* Gonzales Martinez Luis Enrrique
+* Gonzalez Martinez Luis Enrrique
 * Manjarrez Vazquez Alfredo de Jesús
 
  ## PILA TECNOLOGICA

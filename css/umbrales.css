@@ -1,0 +1,6 @@
+/* Pantalla Umbrales de riego */
+.row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.row b{font-weight:600}.row output{font:600 22px Fraunces,Georgia,serif}
+input[type=range]{width:100%;accent-color:var(--green);height:28px}
+.scale{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+.save{width:100%;margin-top:6px;padding:15px;border:0;border-radius:14px;background:var(--green);color:#F3EFE3;font:600 15px "Work Sans";cursor:pointer}

@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/planta.css">
   <link rel="stylesheet" href="css/umbrales.css">
   <link rel="stylesheet" href="css/historial.css">
+   <link rel="stylesheet" href="css/ia.css">
 </head>
 
 <body>
@@ -27,6 +28,39 @@
   <script src="js/umbrales.js" defer></script>
   <script src="js/historial.js" defer></script>
   <script src="js/nav.js" defer></script>
+   <script src="js/ai.js" defer></script>
+
+
+ <!---Chat del proyecto PlantGuard-->
+
+<div id="plantguard-ai-container">
+    <!-- Botón flotante para abrir/cerrar el chat -->
+    <button id="ai-toggle-btn" aria-label="Abrir asistente IA">
+        🌱
+    </button>
+
+    <!-- Ventana de chat -->
+    <div id="ai-chat-window" class="ai-hidden">
+    <div class="ai-header">
+    <span>Asistente PlantGuard</span>
+    <button id="ai-close-btn">&times;</button>
+    </div>
+    <div id="ai-messages" class="ai-messages">
+    <div class="ai-msg ai-bot">
+    ¡Hola! Soy tu asistente de PlantGuard. ¿En qué te ayudo con tus plantas?
+    </div>
+        
+  </div>
+  <div class="ai-input-area">
+  <input type="text" id="ai-user-input" placeholder="Pregunta sobre tu planta o riego...">
+  <button id="ai-send-btn">Enviar</button>
+  </div>
+  </div>
+<!--Bloque de la ia final-->
+   
+
+</div>
+   
 </body>
 
 </html>

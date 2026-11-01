@@ -1,4 +1,3 @@
-/* Núcleo: estado compartido, eventos y arranque. Las pantallas se registran con PG.register(id, def). */
 (function () {
   var PG = window.PG = {
     state: { soil: 28, thr: 35, dur: 10, wait: 30, pump: true },

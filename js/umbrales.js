@@ -1,4 +1,3 @@
-/* Pantalla Umbrales: humedad mínima, duración y espera entre riegos (HU03, HU04) */
 (function () {
   var html = [
     '<h1 class="title">Umbrales de riego</h1><p class="sub">Ajusta cuándo se activa el riego automático</p>',

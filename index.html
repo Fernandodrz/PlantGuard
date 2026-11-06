@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>PlantGuard · Maquetado</title>
+  <title>PlantGuard</title>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="css/base.css">
@@ -14,52 +14,37 @@
   <link rel="stylesheet" href="css/umbrales.css">
   <link rel="stylesheet" href="css/historial.css">
   <link rel="stylesheet" href="css/ia.css">
+  <link rel="stylesheet" href="css/sim.css">
 </head>
 
 <body>
   <div class="phone">
+    <div id="toasts" aria-live="polite"></div>
     <div class="screens" id="screens"></div>
     <nav id="nav" aria-label="Principal"></nav>
+
+    <div id="plantguard-ai-container">
+      <div id="ai-chat-window" class="ai-hidden">
+        <div class="ai-header"><span>🌿 Asistente PlantGuard</span><button id="ai-close-btn" aria-label="Cerrar">×</button></div>
+        <div class="ai-messages" id="ai-messages"></div>
+        <div class="ai-input-area">
+          <input id="ai-user-input" type="text" placeholder="Escribe tu pregunta…" autocomplete="off">
+          <button id="ai-send-btn" aria-label="Enviar">➤</button>
+        </div>
+      </div>
+      <button id="ai-toggle-btn" aria-label="Abrir asistente">💬</button>
+    </div>
   </div>
+  <!-- El orden importa: Chart.js y app.js primero; sim.js antes de las pantallas; nav.js y ai.js al final -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="js/app.js" defer></script>
+  <script src="js/sim.js" defer></script>
   <script src="js/inicio.js" defer></script>
   <script src="js/planta.js" defer></script>
   <script src="js/umbrales.js" defer></script>
   <script src="js/historial.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/ai.js" defer></script>
-
-
-  <!---Chat del proyecto PlantGuard-->
-
-<div id="plantguard-ai-container">
-    <!-- Botón flotante para abrir/cerrar el chat -->
-    <button id="ai-toggle-btn" aria-label="Abrir asistente IA">
-        🌱
-    </button>
-
-    <!-- Ventana de chat -->
-    <div id="ai-chat-window" class="ai-hidden">
-    <div class="ai-header">
-    <span>Asistente PlantGuard</span>
-    <button id="ai-close-btn">&times;</button>
-    </div>
-    <div id="ai-messages" class="ai-messages">
-    <div class="ai-msg ai-bot">
-    ¡Hola! Soy tu asistente de PlantGuard. ¿En qué te ayudo con tus plantas?
-    </div>
-        
-  </div>
-  <div class="ai-input-area">
-  <input type="text" id="ai-user-input" placeholder="Pregunta sobre tu planta o riego...">
-  <button id="ai-send-btn">Enviar</button>
-  </div>
-  </div>
-<!--Bloque de la ia final-->
-   
-
-</div>
-
 </body>
 
 </html>

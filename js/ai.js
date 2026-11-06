@@ -139,23 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---------- Datos de la app ----------
     function getAppLiveData() {
-        const humedad = 28, umbral = 35;
-        return {
-            nombrePlanta: "La Dormilona (Mimosa pudica)",
-            ubicacion: "Interior, Sala junto a la ventana",
-            humedadSuelo: humedad + "%",
-            umbralMinimo: umbral + "%",
-            estadoHumedad: humedad < umbral ? "Por debajo del umbral" : "Dentro del rango",
-            temperatura: "23°C",
-            humedadAmb: "61%",
-            presion: "1013 hPa",
-            luz: "540 lx",
-            estadoBomba: "Activa · riega 8 s más",
-            duracionRiegoConfigurada: "10 s",
-            esperaMinimaEntreRiegos: "30 min",
-            ultimoRiego: "Hoy, 14:12",
-            proximoEstimado: "En 2 días"
-        };
+        return PG.sim.liveData();
     }
 
     // ---------- Plan B local (sin conexión) ----------
@@ -181,8 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
             reply: (d) => ({ text: `El umbral mínimo actual es ${d.umbralMinimo} y el riego dura ${d.duracionRiegoConfigurada}, con espera mínima de ${d.esperaMinimaEntreRiegos}. Puedes cambiarlo en la pestaña "Umbrales".`, chips: ["¿Por qué se está regando?", "Ver historial"] })
         },
         {
-            test: /ultimo riego|ultima vez|proximo|cuando (se )?(rego|riega|va a regar|regar)/,
-            reply: (d) => ({ text: `El último riego fue: ${d.ultimoRiego}. El próximo estimado es: ${d.proximoEstimado.toLowerCase()}.`, chips: ["¿Por qué se está regando?", "Ver historial"] })
+            test: /ultimo riego|ultima vez|proximo|cuando (se )?(rego|riego|riega|va a regar|regar)/,
+            reply: (d) => ({ text: `Ahora el suelo está en ${d.humedadSuelo} (umbral ${d.umbralMinimo}). Último riego: ${d.ultimoRiego}. ${d.proximoEstimado}.`, chips: ["¿Por qué se está regando?", "Ver historial"] })
         },
         {
             test: /amarill/,

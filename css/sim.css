@@ -1,0 +1,161 @@
+/* Simulación: colores por nivel, avisos (toasts), tabla de eventos y ajustes del chat */
+.phone {
+    position: relative
+}
+
+.screens {
+    padding-bottom: 76px
+}
+
+.lv-ok {
+    --lv: #5E9E4F
+}
+
+.lv-warn {
+    --lv: #D4A017
+}
+
+.lv-bad {
+    --lv: #D9534F
+}
+
+.tile.lv-ok b,
+.tile.lv-warn b,
+.tile.lv-bad b {
+    color: var(--lv)
+}
+
+.hero p.lv-ok {
+    color: #A9C79B
+}
+
+.hero p.lv-warn {
+    color: #E5C05A
+}
+
+.hero p.lv-bad {
+    color: #F08A7E
+}
+
+.alert.warn {
+    background: #A9792F
+}
+
+.alert.bad {
+    background: #B5483A
+}
+
+#toasts {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    right: 12px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none
+}
+
+.toast {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #F3EFE3;
+    background: var(--green);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .25)
+}
+
+.toast.bad {
+    background: #B5483A
+}
+
+.toast.ok {
+    background: #4F7F45
+}
+
+.sel {
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text);
+    font: 500 13px "Work Sans"
+}
+
+.tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px
+}
+
+.tbl td {
+    padding: 8px 4px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top
+}
+
+.tbl td:first-child {
+    color: var(--muted);
+    white-space: nowrap;
+    padding-right: 10px
+}
+
+.mini {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px dashed var(--line);
+    background: none;
+    color: var(--muted);
+    font: 500 13px "Work Sans";
+    cursor: pointer
+}
+
+#plantguard-ai-container {
+    position: absolute;
+    right: 14px;
+    bottom: 76px
+}
+
+#ai-chat-window {
+    width: min(340px, calc(100vw - 28px))
+}
+
+.fld {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    color: var(--muted)
+}
+
+.fld input,
+.fld select,
+.fld textarea {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 9px 11px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--text);
+    font: 400 16px "Work Sans", system-ui, sans-serif
+}
+
+.fld textarea {
+    resize: vertical
+}
+
+.state b {
+    display: block
+}
+
+.state div:last-child b {
+    font: 600 13px "Work Sans";
+    max-width: 160px;
+    margin-left: auto
+}

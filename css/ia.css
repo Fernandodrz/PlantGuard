@@ -1,7 +1,4 @@
 #plantguard-ai-container {
-    position: fixed;
-    bottom: 75px; /* Por encima de la barra de navegación inferior */
-    right: 20px;
     z-index: 9999;
     font-family: 'Work Sans', sans-serif;
 }
@@ -15,7 +12,7 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     transition: transform 0.2s;
     display: flex;
     align-items: center;
@@ -38,7 +35,7 @@
     border-radius: 14px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
     overflow: hidden;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -123,12 +120,27 @@
     animation: ai-bounce 1.2s infinite ease-in-out;
 }
 
-.ai-typing span:nth-child(2) { animation-delay: .15s; }
-.ai-typing span:nth-child(3) { animation-delay: .3s; }
+.ai-typing span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.ai-typing span:nth-child(3) {
+    animation-delay: .3s;
+}
 
 @keyframes ai-bounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: .5; }
-    30% { transform: translateY(-5px); opacity: 1; }
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: .5;
+    }
+
+    30% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
 }
 
 /* Chips de sugerencias rápidas */
@@ -172,7 +184,8 @@
     border-radius: 6px;
     padding: 8px 10px;
     color: white;
-    font-size: 16px; /* evita el zoom automático en iPhone */
+    font-size: 16px;
+    /* evita el zoom automático en iPhone */
     outline: none;
 }
 
@@ -199,23 +212,17 @@
 
 /* Adaptabilidad móvil (iPhone / Android pequeños) */
 @media screen and (max-width: 480px) {
-    #plantguard-ai-container {
-        bottom: calc(70px + env(safe-area-inset-bottom));
-        right: 15px;
-    }
-
     #ai-chat-window {
         position: fixed;
         bottom: 0;
         right: 0;
         left: 0;
         width: 100vw;
-        height: 82vh;   /* respaldo para navegadores viejos */
         height: 82dvh;
         max-height: 85dvh;
         border-radius: 20px 20px 0 0;
         border: none;
         border-top: 1px solid #32442e;
-        box-shadow: 0 -5px 25px rgba(0,0,0,0.7);
+        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.7);
     }
 }

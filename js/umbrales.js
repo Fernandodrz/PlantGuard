@@ -1,3 +1,4 @@
+/* Pantalla Umbrales: humedad mínima, duración y espera entre riegos (HU03, HU04) */
 (function () {
   var html = [
     '<h1 class="title">Umbrales de riego</h1><p class="sub">Ajusta cuándo se activa el riego automático</p>',
@@ -9,6 +10,10 @@
     '<div class="card"><div class="row"><b>Espera mínima entre riegos</b><output id="o3"></output></div>',
     '<input type="range" id="r3" min="10" max="120" step="5" aria-label="Espera mínima entre riegos">',
     '<p class="muted" style="margin-top:8px">Evita ciclos de riego demasiado frecuentes tras una activación.</p></div>',
+    '<div class="card"><div class="row"><b>Modo demo</b><input type="checkbox" id="demo" aria-label="Modo demo"></div>',
+    '<p class="muted">Acorta la espera entre riegos (1 min = 1 s) para ver el ciclo completo en la presentación.</p>',
+    '<p class="muted" id="dcap" style="margin-top:6px;font-weight:600"></p>',
+    '<p class="muted" style="margin-top:6px">Para verlo: sube el umbral por encima de la humedad actual y mira la cuenta regresiva en Inicio.</p></div>',
     '<button class="save" id="save">Guardar cambios</button>'
   ].join('');
 
@@ -21,8 +26,20 @@
         r.value = PG.state[m[2]]; o.textContent = r.value + m[3];
         r.oninput = function () { o.textContent = r.value + m[3]; PG.set(m[2], +r.value); };
       });
+      var d = sec.querySelector('#demo');
+      var o3 = sec.querySelector('#o3'), r3 = sec.querySelector('#r3'), cap = sec.querySelector('#dcap');
+      function paint() {
+        var w = PG.state.wait, dm = PG.state.demo;
+        o3.textContent = dm ? w + ' min → ' + w + ' s' : w + ' min';
+        cap.textContent = dm ? 'Modo demo ACTIVADO: la espera real ahora es de ' + w + ' s.' : 'Modo demo apagado: la espera real es de ' + w + ' min.';
+      }
+      d.checked = PG.state.demo;
+      d.onchange = function () { PG.set('demo', d.checked); paint(); };
+      r3.oninput = function () { PG.set('wait', +r3.value); paint(); };
+      paint();
       var b = sec.querySelector('#save');
       b.onclick = function () {
+        PG.sim.saveSettings();
         b.textContent = 'Cambios guardados';
         setTimeout(function () { b.textContent = 'Guardar cambios'; }, 1600);
       };

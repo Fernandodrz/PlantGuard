@@ -1,3 +1,4 @@
+/* Barra de navegación: botones, íconos y cambio de pantalla */
 (function () {
   var items = [
     { id: 'inicio', label: 'Inicio', icon: '<path d="M3 11l9-8 9 8v10H3z"/>' },

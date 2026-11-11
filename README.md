@@ -37,3 +37,5 @@ Desarrollar un sistema de riego automatizado y configurable que mantenga las pla
 ## SIMULACIÓN (Nivel 1)
 La versión web funciona sin ESP32 ni servidor: `js/sim.js` genera lecturas de humedad del suelo, temperatura y humedad ambiental cada 3 s, controla la bomba (manual y automática con umbral, duración y espera mínima), guarda el historial en `localStorage` y lanza alertas en pantalla. El historial se grafica con Chart.js. El **modo demo** (pantalla Umbrales) convierte los minutos de espera en segundos.
 El asistente de chat responde con reglas usando los datos simulados; con `api/chat.js` desplegado en Vercel (variable `GEMINI_API_KEY`) responde con IA.
+
+Cada planta tiene su propia simulación: sensores (humedad del suelo, temperatura y humedad ambiente), bomba, umbrales, espera entre riegos, historial y alertas. Todas siguen funcionando en segundo plano aunque no sea la planta activa.

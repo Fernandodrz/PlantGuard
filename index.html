@@ -25,7 +25,8 @@
 
     <div id="plantguard-ai-container">
       <div id="ai-chat-window" class="ai-hidden">
-        <div class="ai-header"><span>🌿 Asistente PlantGuard</span><button id="ai-close-btn" aria-label="Cerrar">×</button></div>
+        <div class="ai-header"><span>🌿 Asistente PlantGuard</span><button id="ai-close-btn"
+            aria-label="Cerrar">×</button></div>
         <div class="ai-messages" id="ai-messages"></div>
         <div class="ai-input-area">
           <input id="ai-user-input" type="text" placeholder="Escribe tu pregunta…" autocomplete="off">
@@ -35,7 +36,6 @@
       <button id="ai-toggle-btn" aria-label="Abrir asistente">💬</button>
     </div>
   </div>
-  <!-- El orden importa: Chart.js y app.js primero; sim.js antes de las pantallas; nav.js y ai.js al final -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/sim.js" defer></script>
@@ -44,6 +44,8 @@
   <script src="js/umbrales.js" defer></script>
   <script src="js/historial.js" defer></script>
   <script src="js/nav.js" defer></script>
+  <script src="js/firebase-config.js" defer></script>
+  <script src="js/firebase.js" defer></script>
   <script src="js/ai.js" defer></script>
 </body>
 

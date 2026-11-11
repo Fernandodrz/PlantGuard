@@ -1,4 +1,4 @@
-/* Pantalla Historial: gráfica Chart.js con lecturas guardadas y tabla de eventos (HU08) */
+/* Pantalla Historial: gráfica Chart.js con lecturas guardadas y tabla de eventos */
 (function () {
   var html = [
     '<h1 class="title">Historial</h1><p class="sub" id="sub"></p>',

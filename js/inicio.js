@@ -1,9 +1,10 @@
-/* Pantalla Inicio: lecturas simuladas con color por nivel, estado de la bomba y alertas (HU02, HU05, HU06, HU07) */
+/* Pantalla Inicio: lecturas simuladas con color por nivel, estado de la bomba y alertas */
 (function () {
   var html = [
-    '<div class="top"><div class="logo"><i></i>PlantGuard</div><div class="pill">Bytec <b>◎</b></div></div>',
+    '<div class="top"><div class="logo"><i></i>PlantGuard</div><div class="pill"><span id="cloud" class="cloud off">☁ Local</span>Bytec <b>◎</b></div></div>',
+    '<div class="pl-row" id="i-plants" role="group" aria-label="Mis plantas"></div>',
     '<div class="alert" id="alerta">⚠ <span></span></div>',
-    '<div class="hero"><small>Humedad del suelo</small><div class="big"><span id="hv" style="font-size:56px;opacity:1"></span><span>%</span></div><p id="hmsg"></p></div>',
+    '<div class="hero"><small>Humedad del suelo<span id="hname"></span></small><div class="big"><span id="hv" style="font-size:56px;opacity:1"></span><span>%</span></div><p id="hmsg"></p></div>',
     '<div class="grid">',
     '<div class="tile" id="t-temp"><small>🌡</small><b></b><small>Temperatura</small></div>',
     '<div class="tile" id="t-hum"><small>💧</small><b></b><small>Humedad amb.</small></div>',
@@ -17,8 +18,29 @@
 
   function lv(el, l) { el.classList.remove('lv-ok', 'lv-warn', 'lv-bad'); el.classList.add('lv-' + l); }
 
+  var sig = '';
+  function chips(sec) { /* una pastilla por planta; el punto de color indica su humedad y el halo, si está regando */
+    var d = PG.plantsData && PG.plantsData(), box = sec.querySelector('#i-plants'); if (!d) return;
+    var key = d.list.map(function (p) { return p.id + p.nombre + p.icono; }).join('|') + '#' + PG.plant.id;
+    box.style.display = d.list.length > 1 ? 'flex' : 'none';
+    if (sig !== key) {
+      sig = key; box.innerHTML = '';
+      d.list.forEach(function (p) {
+        var b = document.createElement('button'); b.className = 'pl-chip'; b.dataset.id = p.id; b.setAttribute('aria-pressed', p.id === PG.plant.id);
+        b.innerHTML = PG.plantIcons.svg(p.icono, 24) + '<span></span><i class="dot"></i>';
+        b.querySelector('span').textContent = p.nombre; b.onclick = function () { PG.selectPlant(p.id); };
+        box.appendChild(b);
+      });
+    }
+    PG.sim.summary().forEach(function (x) {
+      var b = box.querySelector('[data-id="' + x.id + '"]'); if (b) b.querySelector('.dot').className = 'dot lv-' + x.lv + (x.pump ? ' on' : '');
+    });
+  }
+
   function render(sec) {
     var s = PG.state, L = PG.sim.level, r = Math.round(s.soil), l = s.ok ? L('soil', s.soil) : 'bad';
+    chips(sec);
+    sec.querySelector('#hname').textContent = PG.plant ? ' · ' + PG.plant.nombre : '';
     sec.querySelector('#hv').textContent = s.ok ? r : '--';
     var m = sec.querySelector('#hmsg');
     m.textContent = !s.ok ? 'Sensor desconectado' : l === 'bad' ? 'Humedad crítica (umbral ' + s.thr + '%)'
@@ -48,7 +70,15 @@
     init: function (sec) {
       sec.querySelector('#sw').onclick = function () { PG.sim.toggle(); };
       sec.querySelector('#fail').onclick = function () { PG.sim.fail(); };
+      function cloud(c) {
+        var el = sec.querySelector('#cloud'), t = { off: '☁ Local', connecting: '☁ …', on: '☁ Nube', error: '☁ Sin nube' };
+        el.textContent = t[c.state] || '☁'; el.className = 'cloud ' + c.state;
+        el.title = c.state === 'on' ? 'Sincronizado con Firebase' : c.state === 'error' ? 'Error de Firebase: ' + c.msg
+          : c.state === 'connecting' ? 'Conectando con Firebase…' : 'Firebase sin configurar: los datos quedan solo en este navegador';
+      }
+      PG.on('cloud', cloud); cloud(PG.cloud || { state: 'off' });
       PG.on('state', function () { render(sec); });
+      PG.on('plant', function () { render(sec); });
       render(sec);
     }
   });

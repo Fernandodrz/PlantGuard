@@ -159,3 +159,120 @@
     max-width: 160px;
     margin-left: auto
 }
+
+.pl-row {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 10px
+}
+
+.pl-chip {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px 6px 8px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text);
+    font: 500 13px "Work Sans", system-ui, sans-serif;
+    cursor: pointer
+}
+
+.pl-chip[aria-pressed="true"] {
+    border-color: var(--green);
+    background: var(--green);
+    color: #F3EFE3
+}
+
+.pl-chip.add {
+    border-style: dashed;
+    background: none;
+    color: var(--muted);
+    padding-left: 12px
+}
+
+.pl-ico {
+    color: var(--green);
+    display: block;
+    margin: 0 auto
+}
+
+.pl-chip .pl-ico {
+    color: inherit;
+    margin: 0
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 6px 0 12px
+}
+
+.ic-btn {
+    padding: 6px 2px 4px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background: var(--bg);
+    cursor: pointer;
+    color: var(--text);
+    font: 500 10.5px "Work Sans", system-ui, sans-serif;
+    line-height: 1.2
+}
+
+.ic-btn[aria-pressed="true"] {
+    border-color: var(--green)
+}
+
+.cloud {
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--muted)
+}
+
+.cloud.on {
+    color: #4F7F45
+}
+
+.cloud.error {
+    color: #D9534F
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--lv, #5E9E4F);
+    display: inline-block;
+    border: 1.5px solid #F3EFE3;
+    flex: none
+}
+
+.dot.on {
+    box-shadow: 0 0 0 3px rgba(94, 158, 79, .45)
+}
+
+.err {
+    display: block;
+    color: #D9534F;
+    font-size: 12px;
+    margin-top: 4px;
+    line-height: 1.3
+}
+
+.err:empty {
+    display: none
+}
+
+.fld input.bad,
+.fld select.bad,
+.fld textarea.bad {
+    border-color: #D9534F
+}

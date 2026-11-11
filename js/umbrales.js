@@ -1,7 +1,7 @@
-/* Pantalla Umbrales: humedad mínima, duración y espera entre riegos (HU03, HU04) */
+/* Pantalla Umbrales: humedad mínima, duración y espera entre riegos */
 (function () {
   var html = [
-    '<h1 class="title">Umbrales de riego</h1><p class="sub">Ajusta cuándo se activa el riego automático</p>',
+    '<h1 class="title">Umbrales de riego</h1><p class="sub" id="usub"></p>',
     '<div class="card"><div class="row"><b>Umbral de humedad mínima</b><output id="o1"></output></div>',
     '<input type="range" id="r1" min="10" max="80" aria-label="Umbral de humedad mínima"><div class="scale"><span>10%</span><span>80%</span></div>',
     '<p class="muted" style="margin-top:8px">Si la humedad del suelo cae por debajo de este valor, la bomba se activa automáticamente.</p></div>',
@@ -36,10 +36,17 @@
       d.checked = PG.state.demo;
       d.onchange = function () { PG.set('demo', d.checked); paint(); };
       r3.oninput = function () { PG.set('wait', +r3.value); paint(); };
-      paint();
+      function sync() {
+        map.forEach(function (m) { var r = sec.querySelector('#' + m[0]), o = sec.querySelector('#' + m[1]); r.value = PG.state[m[2]]; o.textContent = r.value + m[3]; });
+        d.checked = PG.state.demo; paint();
+        sec.querySelector('#usub').textContent = 'Ajustes de «' + (PG.plant ? PG.plant.nombre : 'la planta') + '» · define cuándo se activa su riego automático';
+      }
+      PG.on('plant', sync);
+      sync();
       var b = sec.querySelector('#save');
       b.onclick = function () {
         PG.sim.saveSettings();
+        if (PG.plantSaveCfg) PG.plantSaveCfg();
         b.textContent = 'Cambios guardados';
         setTimeout(function () { b.textContent = 'Guardar cambios'; }, 1600);
       };
